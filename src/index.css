@@ -1,0 +1,485 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body, #root {
+    min-height: 100%;
+  }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: radial-gradient(circle at 15% 15%, rgba(22, 78, 99, 0.18), transparent 24%), radial-gradient(circle at 86% 80%, rgba(180, 126, 47, 0.12), transparent 25%), #090c11;
+    color: #f5f5f4;
+  }
+  
+  code, kbd, samp, pre {
+    font-family: 'JetBrains Mono', 'Courier Prime', monospace;
+  }
+}
+
+/* Archival dossier utility classes */
+.font-typewriter {
+  font-family: 'Courier Prime', 'JetBrains Mono', monospace;
+}
+
+.dossier-paper {
+  background-color: #d8d7d2;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.15), 0 2px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dossier-inset {
+  background-color: #ffffff;
+  border: 1.5px solid #1c1c1c;
+}
+
+/* Rubber Stamp Aesthetics */
+.stamp-top-secret {
+  border: 3px solid #991b1b;
+  color: #991b1b;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  transform: rotate(-3deg);
+  display: inline-block;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0.6) 100%);
+}
+
+.stamp-verified {
+  border: 2px solid #166534;
+  color: #166534;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transform: rotate(2deg);
+  display: inline-block;
+}
+
+.stamp-compromised {
+  border: 2px solid #b91c1c;
+  color: #b91c1c;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transform: rotate(-4deg);
+  display: inline-block;
+}
+
+/* Fine security guilloche and technical grid lines */
+.bg-security-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* Print Stylesheet for Classified MI6 Dossiers */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+  
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .no-print, nav, header, aside, .non-printable {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .dossier-paper, .dossier-panel {
+    box-shadow: none !important;
+    border: 2px solid #000000 !important;
+    page-break-inside: avoid;
+    background: #ffffff !important;
+  }
+
+  .dossier-inset {
+    border: 1px solid #000000 !important;
+    background: #ffffff !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 8pt;
+    font-family: monospace;
+    border-top: 1px solid #000000;
+    padding-top: 2mm;
+  }
+}
+
+/* Data Sync Tactical Pulse & Flash Animations */
+@keyframes sync-pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7), inset 0 0 10px rgba(245, 158, 11, 0.4);
+    border-color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.25);
+  }
+  30% {
+    box-shadow: 0 0 20px 4px rgba(245, 158, 11, 0.8), inset 0 0 15px rgba(245, 158, 11, 0.6);
+    border-color: #fbbf24;
+    background-color: rgba(245, 158, 11, 0.35);
+  }
+  60% {
+    box-shadow: 0 0 18px 2px rgba(16, 185, 129, 0.7), inset 0 0 12px rgba(16, 185, 129, 0.5);
+    border-color: #10b981;
+    background-color: rgba(16, 185, 129, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    border-color: rgba(87, 83, 78, 0.6);
+    background-color: rgba(28, 30, 35, 0.95);
+  }
+}
+
+.data-sync-flashing {
+  animation: sync-pulse-glow 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+
+
+.mi6-display-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.mi6-swap-panel {
+  background: linear-gradient(180deg, rgba(17, 21, 27, 0.97) 0%, rgba(10, 13, 18, 0.98) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+}
+
+.mi6-swap-panel-soft {
+  background: linear-gradient(180deg, rgba(11, 14, 19, 0.96) 0%, rgba(8, 10, 14, 0.96) 100%);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.mi6-swap-input {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+}
+
+.mi6-swap-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Unified Actor-Swap-inspired MI6 visual system */
+.mi6-app-shell {
+  background:
+    radial-gradient(circle at 12% 14%, rgba(14, 79, 110, .15), transparent 25%),
+    radial-gradient(circle at 88% 82%, rgba(190, 137, 54, .1), transparent 24%),
+    #090c11;
+}
+
+.mi6-swap-panel button,
+.mi6-swap-panel-soft button {
+  letter-spacing: .01em;
+}
+
+.mi6-swap-panel select,
+.mi6-swap-panel-soft select,
+.mi6-swap-panel input,
+.mi6-swap-panel-soft input,
+.mi6-swap-panel textarea,
+.mi6-swap-panel-soft textarea {
+  background-color: rgba(4, 7, 11, .72);
+  border-color: rgba(255,255,255,.1);
+  color: #f5f5f4;
+}
+
+.mi6-swap-panel select:focus,
+.mi6-swap-panel-soft select:focus,
+.mi6-swap-panel input:focus,
+.mi6-swap-panel-soft input:focus,
+.mi6-swap-panel textarea:focus,
+.mi6-swap-panel-soft textarea:focus {
+  border-color: rgba(245, 158, 11, .55);
+  outline: none;
+}
+
+.mi6-swap-panel ::-webkit-scrollbar,
+.mi6-swap-panel-soft ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.mi6-swap-panel ::-webkit-scrollbar-thumb,
+.mi6-swap-panel-soft ::-webkit-scrollbar-thumb {
+  background: rgba(168, 138, 82, .28);
+  border-radius: 999px;
+}
+.mi6-swap-panel ::-webkit-scrollbar-track,
+.mi6-swap-panel-soft ::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.025);
+}
+
+/* v22 // Quiet Intelligence redesign
+   A restrained, content-first MI6 workspace: less dashboard noise, stronger hierarchy. */
+:root {
+  --mi6-bg: #080b0f;
+  --mi6-surface: #0d1218;
+  --mi6-surface-2: #111820;
+  --mi6-border: rgba(255,255,255,.07);
+  --mi6-muted: #737373;
+  --mi6-amber: #e8b85c;
+  --mi6-green: #64d5a4;
+}
+
+body {
+  background:
+    radial-gradient(circle at 72% -10%, rgba(66, 96, 116, .11), transparent 34%),
+    radial-gradient(circle at 8% 95%, rgba(160, 113, 44, .07), transparent 30%),
+    var(--mi6-bg);
+}
+
+.mi6-app-shell {
+  background:
+    linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px),
+    radial-gradient(circle at 72% 8%, rgba(46, 76, 95, .09), transparent 32%),
+    #080b0f;
+  background-size: 46px 46px, 46px 46px, auto, auto;
+}
+
+/* Unify legacy cards without destroying feature-specific styling. */
+.mi6-app-shell .mi6-swap-panel,
+.mi6-app-shell .mi6-swap-panel-soft {
+  border-color: rgba(255,255,255,.065);
+  box-shadow: 0 18px 55px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.mi6-app-shell button,
+.mi6-app-shell input,
+.mi6-app-shell textarea,
+.mi6-app-shell select {
+  transition-duration: 160ms;
+}
+
+.mi6-app-shell h1,
+.mi6-app-shell h2,
+.mi6-app-shell h3 {
+  text-wrap: balance;
+}
+
+/* Calm scrollbar treatment */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232,184,92,.20) rgba(255,255,255,.02);
+}
+
+@media (max-width: 1023px) {
+  .mi6-app-shell main {
+    margin-left: 0 !important;
+  }
+}
+
+/* ========================================================================== */
+/* v28 // Semantic multi-theme interface engine                               */
+/* ========================================================================== */
+:root,
+:root[data-theme="mi6-classified"] {
+  --bg-base: #080b0f;
+  --bg-surface: #0d1218;
+  --bg-elevated: #111820;
+  --bg-modal: #10141a;
+  --bg-soft: rgba(255,255,255,.025);
+  --text-primary: #f5f5f4;
+  --text-secondary: #c7c7c2;
+  --text-muted: #777a80;
+  --accent-primary: #e8b85c;
+  --accent-secondary: #d69a35;
+  --accent-soft: rgba(232,184,92,.10);
+  --accent-border: rgba(232,184,92,.40);
+  --accent-contrast: #080b0f;
+  --border-default: rgba(255,255,255,.075);
+  --border-strong: rgba(255,255,255,.14);
+  --success: #64d5a4;
+  --warning: #f5b942;
+  --danger: #ef6262;
+  --info: #68b9e8;
+  --shadow-soft: 0 18px 55px rgba(0,0,0,.26);
+  --shadow-strong: 0 30px 90px rgba(0,0,0,.48);
+  --glass-alpha: .94;
+  --panel-radius: 24px;
+  --ambient-1: rgba(46,76,95,.09);
+  --ambient-2: rgba(160,113,44,.07);
+  --grid-line: rgba(255,255,255,.014);
+}
+
+:root[data-theme="xbox-series-x"] {
+  --bg-base: #060907; --bg-surface: #0b100c; --bg-elevated: #111813; --bg-modal: #0e1410;
+  --text-primary: #f3f7f3; --text-secondary: #c3ccc4; --text-muted: #708075;
+  --accent-primary: #52b043; --accent-secondary: #78c868; --accent-soft: rgba(82,176,67,.11); --accent-border: rgba(82,176,67,.42); --accent-contrast: #061006;
+  --border-default: rgba(212,255,218,.075); --border-strong: rgba(212,255,218,.15);
+  --success: #72cf69; --warning: #e6b84a; --danger: #ef6262; --info: #72b7e6;
+  --ambient-1: rgba(82,176,67,.11); --ambient-2: rgba(34,85,44,.08); --grid-line: rgba(130,220,139,.014);
+}
+
+:root[data-theme="ps5"] {
+  --bg-base: #050912; --bg-surface: #0b1220; --bg-elevated: #111b2b; --bg-modal: #0d1524;
+  --text-primary: #f7f9ff; --text-secondary: #ccd7e8; --text-muted: #71809a;
+  --accent-primary: #4b8cff; --accent-secondary: #85b2ff; --accent-soft: rgba(75,140,255,.12); --accent-border: rgba(75,140,255,.43); --accent-contrast: #061020;
+  --border-default: rgba(183,211,255,.08); --border-strong: rgba(183,211,255,.16);
+  --success: #55d2ad; --warning: #efbd54; --danger: #f0646f; --info: #6fa9ff;
+  --ambient-1: rgba(58,115,214,.13); --ambient-2: rgba(61,82,151,.07); --grid-line: rgba(134,177,255,.014);
+}
+
+:root[data-theme="windows-11-dark"] {
+  --bg-base: #0b1017; --bg-surface: #121923; --bg-elevated: #192331; --bg-modal: rgba(19,27,38,.96);
+  --text-primary: #f4f7fb; --text-secondary: #c5d0dd; --text-muted: #7d8b9d;
+  --accent-primary: #60a5fa; --accent-secondary: #8fc2ff; --accent-soft: rgba(96,165,250,.12); --accent-border: rgba(96,165,250,.40); --accent-contrast: #07111d;
+  --border-default: rgba(214,230,247,.09); --border-strong: rgba(214,230,247,.17);
+  --success: #5dcba9; --warning: #eabf5a; --danger: #ef6d72; --info: #60a5fa;
+  --shadow-soft: 0 14px 42px rgba(0,0,0,.23); --shadow-strong: 0 28px 72px rgba(0,0,0,.38);
+  --ambient-1: rgba(96,165,250,.11); --ambient-2: rgba(104,119,154,.06); --grid-line: rgba(201,222,248,.012);
+  --panel-radius: 28px;
+}
+
+:root[data-theme="cyber-intelligence"] {
+  --bg-base: #04090a; --bg-surface: #081113; --bg-elevated: #0d191b; --bg-modal: #091416;
+  --text-primary: #eafdfb; --text-secondary: #b9dad7; --text-muted: #66817f;
+  --accent-primary: #21d4c2; --accent-secondary: #9b78ff; --accent-soft: rgba(33,212,194,.10); --accent-border: rgba(33,212,194,.42); --accent-contrast: #03100f;
+  --border-default: rgba(105,236,224,.075); --border-strong: rgba(105,236,224,.16);
+  --success: #52d69f; --warning: #e9bd55; --danger: #ed6575; --info: #58c7e8;
+  --ambient-1: rgba(33,212,194,.09); --ambient-2: rgba(155,120,255,.055); --grid-line: rgba(70,220,209,.018);
+}
+
+:root[data-theme="night-vision"] {
+  --bg-base: #040704; --bg-surface: #09100a; --bg-elevated: #0e170f; --bg-modal: #0a120b;
+  --text-primary: #ecf7ec; --text-secondary: #bdcdbd; --text-muted: #687b69;
+  --accent-primary: #6ccf72; --accent-secondary: #95dd8f; --accent-soft: rgba(108,207,114,.10); --accent-border: rgba(108,207,114,.40); --accent-contrast: #041006;
+  --border-default: rgba(170,229,174,.07); --border-strong: rgba(170,229,174,.15);
+  --success: #6ccf72; --warning: #d9b95d; --danger: #e86a6a; --info: #76bca2;
+  --ambient-1: rgba(93,190,101,.08); --ambient-2: rgba(65,116,69,.055); --grid-line: rgba(116,205,124,.014);
+}
+
+:root[data-theme="arctic-command"] {
+  --bg-base: #061019; --bg-surface: #0a1721; --bg-elevated: #102331; --bg-modal: #0b1924;
+  --text-primary: #f0fbff; --text-secondary: #c2dae3; --text-muted: #6e8791;
+  --accent-primary: #67d6f4; --accent-secondary: #9ae8fb; --accent-soft: rgba(103,214,244,.10); --accent-border: rgba(103,214,244,.42); --accent-contrast: #041219;
+  --border-default: rgba(183,235,248,.075); --border-strong: rgba(183,235,248,.16);
+  --success: #65d3b0; --warning: #efc461; --danger: #ed6b77; --info: #67d6f4;
+  --ambient-1: rgba(103,214,244,.10); --ambient-2: rgba(57,99,130,.075); --grid-line: rgba(129,220,244,.015);
+}
+
+:root[data-theme="crimson-operations"] {
+  --bg-base: #090607; --bg-surface: #110b0d; --bg-elevated: #1a1013; --bg-modal: #140c0f;
+  --text-primary: #faf4f5; --text-secondary: #d7c3c7; --text-muted: #876e73;
+  --accent-primary: #d24b65; --accent-secondary: #ec758b; --accent-soft: rgba(210,75,101,.11); --accent-border: rgba(210,75,101,.42); --accent-contrast: #160509;
+  --border-default: rgba(245,207,214,.07); --border-strong: rgba(245,207,214,.15);
+  --success: #64cba5; --warning: #e6bd5e; --danger: #ff8960; --info: #75aee8;
+  --ambient-1: rgba(210,75,101,.10); --ambient-2: rgba(103,40,54,.075); --grid-line: rgba(216,104,124,.014);
+}
+
+:root[data-accent="gold"] { --accent-primary:#e8b85c; --accent-secondary:#f1cb80; --accent-soft:rgba(232,184,92,.11); --accent-border:rgba(232,184,92,.42); --accent-contrast:#0c0a05; }
+:root[data-accent="green"] { --accent-primary:#52b043; --accent-secondary:#7acb6e; --accent-soft:rgba(82,176,67,.11); --accent-border:rgba(82,176,67,.42); --accent-contrast:#061006; }
+:root[data-accent="blue"] { --accent-primary:#3b82f6; --accent-secondary:#79aaf8; --accent-soft:rgba(59,130,246,.11); --accent-border:rgba(59,130,246,.42); --accent-contrast:#06101f; }
+:root[data-accent="cyan"] { --accent-primary:#22d3ee; --accent-secondary:#74e5f6; --accent-soft:rgba(34,211,238,.11); --accent-border:rgba(34,211,238,.42); --accent-contrast:#031216; }
+:root[data-accent="purple"] { --accent-primary:#a78bfa; --accent-secondary:#c4b5fd; --accent-soft:rgba(167,139,250,.11); --accent-border:rgba(167,139,250,.42); --accent-contrast:#0c0818; }
+:root[data-accent="red"] { --accent-primary:#ef5b68; --accent-secondary:#f58a94; --accent-soft:rgba(239,91,104,.11); --accent-border:rgba(239,91,104,.42); --accent-contrast:#160507; }
+:root[data-accent="orange"] { --accent-primary:#f59e0b; --accent-secondary:#f8bd55; --accent-soft:rgba(245,158,11,.11); --accent-border:rgba(245,158,11,.42); --accent-contrast:#140c02; }
+:root[data-accent="silver"] { --accent-primary:#d6d9df; --accent-secondary:#eef0f3; --accent-soft:rgba(214,217,223,.10); --accent-border:rgba(214,217,223,.38); --accent-contrast:#090b0e; }
+
+html, body, #root { background: var(--bg-base); color: var(--text-primary); }
+body {
+  background:
+    radial-gradient(circle at 72% -10%, var(--ambient-1), transparent 34%),
+    radial-gradient(circle at 8% 95%, var(--ambient-2), transparent 30%),
+    var(--bg-base);
+}
+.mi6-app-shell {
+  color: var(--text-primary);
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(circle at 75% 8%, var(--ambient-1), transparent 32%),
+    var(--bg-base);
+  background-size: 46px 46px, 46px 46px, auto, auto;
+}
+.mi6-swap-panel {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-elevated) 96%, transparent), color-mix(in srgb, var(--bg-surface) 98%, black 2%));
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-strong), inset 0 1px 0 rgba(255,255,255,.025);
+}
+.mi6-swap-panel-soft {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-surface) 97%, transparent), color-mix(in srgb, var(--bg-base) 96%, transparent));
+  border-color: var(--border-default);
+}
+.mi6-swap-panel select, .mi6-swap-panel-soft select, .mi6-swap-panel input, .mi6-swap-panel-soft input, .mi6-swap-panel textarea, .mi6-swap-panel-soft textarea {
+  background-color: color-mix(in srgb, var(--bg-base) 80%, transparent);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+.mi6-swap-panel select:focus, .mi6-swap-panel-soft select:focus, .mi6-swap-panel input:focus, .mi6-swap-panel-soft input:focus, .mi6-swap-panel textarea:focus, .mi6-swap-panel-soft textarea:focus { border-color: var(--accent-border); }
+* { scrollbar-color: color-mix(in srgb, var(--accent-primary) 30%, transparent) color-mix(in srgb, var(--bg-elevated) 45%, transparent); }
+::selection { background: var(--accent-primary); color: var(--accent-contrast); }
+
+/* Translate legacy amber UI chrome into the selected semantic accent. */
+html[data-theme] .mi6-app-shell [class*="text-amber-"] { color: var(--accent-primary) !important; }
+html[data-theme] .mi6-app-shell [class*="border-amber-"] { border-color: var(--accent-border) !important; }
+html[data-theme] .mi6-app-shell [class*="bg-amber-"] { background-color: var(--accent-soft) !important; }
+html[data-theme] .mi6-app-shell button[class*="bg-amber-500"] { background-color: var(--accent-primary) !important; color: var(--accent-contrast) !important; }
+html[data-theme] .mi6-app-shell [class*="focus:border-amber-"]:focus { border-color: var(--accent-primary) !important; }
+html[data-theme] .mi6-app-shell input[class*="accent-amber-"] { accent-color: var(--accent-primary) !important; }
+
+.theme-settings-shell { background: color-mix(in srgb, var(--bg-surface) 90%, transparent); border-color: var(--border-default) !important; box-shadow: var(--shadow-soft); }
+.theme-card { background: color-mix(in srgb, var(--bg-elevated) 74%, transparent); border-color: var(--border-default); color: var(--text-secondary); }
+.theme-card:hover { border-color: var(--border-strong); background: color-mix(in srgb, var(--bg-elevated) 91%, transparent); transform: translateY(-1px); }
+.theme-card.is-active { border-color: var(--accent-border); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-primary) 15%, transparent), 0 12px 34px color-mix(in srgb, var(--accent-primary) 8%, transparent); }
+.theme-mini-preview { background: color-mix(in srgb, var(--bg-base) 78%, transparent); }
+.theme-selected-badge { background: var(--accent-primary); color: var(--accent-contrast); }
+.theme-quiet-button { background: color-mix(in srgb, var(--bg-elevated) 70%, transparent); border-color: var(--border-default) !important; }
+.accent-chip { color: var(--text-secondary); border-color: var(--border-default); background: color-mix(in srgb, var(--bg-elevated) 65%, transparent); }
+.accent-chip:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.accent-chip.is-active { border-color: var(--accent-border); background: var(--accent-soft); color: var(--text-primary); }
+
+.bond-actor-card { background: color-mix(in srgb, var(--bg-elevated) 68%, transparent); border-color: var(--border-default); min-width: 0; }
+.bond-actor-card:hover { border-color: var(--border-strong); background: color-mix(in srgb, var(--bg-elevated) 90%, transparent); transform: translateY(-1px); }
+.bond-actor-card.is-active { border-color: var(--accent-border); background: var(--accent-soft); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-primary) 13%, transparent); }
+.actor-portrait { color: color-mix(in srgb, var(--accent-primary) 72%, var(--text-muted)); }
+.actor-fallback { background: radial-gradient(circle at 50% 25%, var(--accent-soft), transparent 45%), linear-gradient(145deg, var(--bg-elevated), var(--bg-base)); }
+
+/* Better modal depth, regardless of which subsystem opened it. */
+.mi6-app-shell .fixed.inset-0 > section,
+.mi6-app-shell .fixed.inset-0 > div > section {
+  border-color: var(--border-default);
+}
+
+:root[data-theme="windows-11-dark"] .mi6-swap-panel,
+:root[data-theme="windows-11-dark"] .mi6-swap-panel-soft,
+:root[data-theme="windows-11-dark"] .theme-settings-shell {
+  backdrop-filter: blur(22px) saturate(1.12);
+}
+.launch-ambient-bg {
+  background:
+    radial-gradient(circle at 18% 18%, var(--ambient-1), transparent 26%),
+    radial-gradient(circle at 82% 78%, var(--ambient-2), transparent 26%),
+    linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 55%, var(--bg-base) 100%);
+}

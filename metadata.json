@@ -1,0 +1,8 @@
+{
+  "name": "raerocket — Classified Intelligence Database \u0026 Mission Simulator",
+  "description": "Classified operations database, archival dossier system, relationship intelligence graph, and interactive tactical mission simulator for the Secret Intelligence Service.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
